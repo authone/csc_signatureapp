@@ -1,0 +1,99 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00b7ff;
+}
+
+/* div.authorization_token {
+  height: 80px;
+  width: 120px;
+  margin: 20px;
+  padding: 20px;
+  display: inline-block;
+  background-color: palegreen;
+  border-width: 5px;
+  box-sizing: border-box;
+  border-style: solid;
+} */
+
+/*
+  Top logo table
+*/
+#toplogo table {
+  border-top: 1px solid #ccc;
+  width: 100%;
+  padding: 10px 10px;
+  color: rgb(0, 170, 255);
+}
+
+#toplogo td {
+  border-bottom: 1px solid #ccc;
+  font-size: 130%;
+  padding: 15px;
+  text-align: right;
+  font-weight: bold;
+}
+#toplogo img {
+  height: 48px;
+  display: block;
+}
+/*
+  Top navigation bar
+*/
+
+#nav ul {
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+  list-style-type: none;
+  padding: 10px 10px;
+}
+#nav ul li {
+  display: inline;
+}
+#nav ul li a {
+  font-weight: bold;
+  border: 1px solid #ccc;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-bottom: none;
+  margin-right: 5px;
+  margin-bottom: 1px;
+  background-color: #eee;
+}
+#nav ul li a.current {
+  background-color: #fff;
+  border-bottom: 1px solid #fff;
+}
+#nav ul li a:hover {
+  color: #000;
+  background-color: #eee;
+}
+
+/*
+  Body: Text Box
+*/
+#rotextbox {
+  inline-size: 150px;
+  overflow-wrap: break-word;
+  word-break: break-all;
+  border: 1px solid #ccc;
+  width: 100%;
+  display: grid;
+  background-color: rgba(0, 0, 0, 0.03);
+  font-family: "Menlo", "Consolas", "DejaVu Sans Mono", "Monaco", "monospace";
+  line-height: 1.5;
+}
+
+pre {
+  word-break: break-all;
+  border: 1px solid #ccc;
+  background-color: rgba(0, 0, 0, 0.03);
+  overflow: auto;
+  overflow-wrap: break-word;
+  font-family: "Menlo", "Consolas", "DejaVu Sans Mono", "Monaco", "monospace";
+  hyphens: none;
+  line-height: 1.5;
+}

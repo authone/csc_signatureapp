@@ -1,0 +1,44 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='http://code.jquery.com/jquery-1.9.1.js')
+
+  div#toplogo
+    table
+      tbody
+        tr
+          td
+            img.image(src= '/images/certsign-logo.png')
+          td(align="right") QTSP: Qualified Electronic Signature Provider
+        tr
+          td
+            img.image(src= '/images/dc4eu_logo.png')
+          td Issuer: Credential Signing using CSC protocol
+
+  body
+    div#nav
+      ul
+        li 
+          if(currentURL == '/')
+            a(href='/').current Server Info
+          else
+            a(href='/') Server Info
+        li
+          if(currentURL == '/service_authz')
+            a(href='/service_authz').current Service Authorization
+          else
+            a(href='/service_authz') Service Authorization
+        li
+          if(currentURL == '/credentials_list')
+            a(href='/credentials_list').current Credentials List 
+          else
+            a(href='/credentials_list') Credentials List
+        li
+          if(currentURL == '/sign')
+            a(href='/sign').current Sign 
+          else
+            a(href='/sign') Sign  
+
+    block content
