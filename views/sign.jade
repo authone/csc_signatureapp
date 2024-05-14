@@ -1,0 +1,84 @@
+extends layout
+
+block content
+
+  script.
+    var onAuthCredential_QM = function() {
+      console.log('=== onAuthCredential_QM ===');
+      $.ajax({
+          url: '/csc/authorize_credential', 
+          type: 'GET',
+          success: function(data) {
+            var newfunc = `onAuthCredential("${data.url}")`;
+            $("#btnAuthCredential").html("Authorize Credential");
+            $("#btnAuthCredential").attr('onclick', newfunc);
+            $("#rotextbox").html(data.url);
+          },
+      });
+    };
+    var onAuthCredential = function(url) {
+      console.log('=== onAuthCredential ===');
+      const href = url.replaceAll("&amp;", "&");
+      console.log(href);
+      window.location.href = href;
+    };
+    var onAuthCredentialToken = function() {
+      console.log('=== onAuthCredentialToken ===');
+      $.ajax({
+        url:'/csc/authz_token_credential', 
+        type:'GET',
+        success: function(data) {
+          window.location.href = "/sign";
+        },
+      });
+    };
+    var onSignData = function () {
+      console.log('=== onSignData ===');
+      $.ajax({
+        url:'/csc/sign_data', 
+        type:'GET',
+        success: function(data) {
+          window.location.href = "/sign";
+        },
+      });
+    };
+
+
+  h1= title
+  
+  h2= "Document to be Signed (Credential)"
+  pre
+    code.
+      #{dtbs}
+
+  h2= "Authorization URL"
+  p
+    text#rotextbox
+
+  p
+    button(type="button", id="btnAuthCredential", onclick='onAuthCredential_QM()') ?
+  
+  if credentialAuthzCode
+    p
+    h2= "Credential Authorization Code" 
+    text#rotextbox #{credentialAuthzCode}
+
+  p
+    button(type="button", onclick='onAuthCredentialToken()') Get Credential Authorization Token
+
+  if credentialAuthzToken
+    p
+      text#rotextbox #{credentialAuthzToken} 
+      
+  p 
+    text#rotextbox #{sad}
+
+  p 
+    button(type="button", onclick='onSignData()') Sign Data
+
+  if jws 
+    p 
+      h2= "JWS Representation"
+      text#rotextbox #{jws}
+
+

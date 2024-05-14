@@ -1,0 +1,61 @@
+extends layout
+
+block content
+
+  script.
+    var onAuthService_QM = function() {
+      console.log('=== onAuthService_QM ===');
+      $.ajax({
+        url:'/csc/authorize_service', 
+        type:'GET',
+        success: function(data) {
+          var newfunc = `onAuthServiceCode("${data.url}")`;
+          $("#btnAuthService").html("Authorize Service");
+          $("#btnAuthService").attr('onclick', newfunc);
+          $("#rotextbox").html(data.url);
+        },
+      });
+    };
+    var onAuthServiceCode = function(url) {
+      console.log('=== onAuthServiceCode ===');
+      const href = url.replaceAll("&amp;", "&");
+      console.log(href);
+      window.location.href = href;
+    };
+    var onAuthServiceToken = function() {
+      console.log('=== onAuthServiceToken ===');
+      $.ajax({
+        url:'/csc/authz_token_service', 
+        type:'GET',
+        success: function(data) {
+          window.location.href = "/service_authz";
+        },
+        //- error: function(error) {
+        //-     alert( "Request of /csc/authz_token_service failed");
+        //-     console.log("onAuthServiceToken: "+ error);
+        //- },
+        //- complete: function () {
+        //-   console.log("/csc/authz_token_service finished execution");
+        //- },
+      });
+    };
+
+  h1= title
+
+  h2= "Authorization URL"
+  p
+    text#rotextbox
+
+  p 
+    button(type="button", id="btnAuthService" onclick='onAuthService_QM()') ?
+
+  if serviceAuthzCode
+    p
+    h2= "Service Authorization Code" 
+    text#rotextbox #{serviceAuthzCode}
+
+  p 
+    button(type="button", onclick='onAuthServiceToken()') Get Service Authz Token
+
+  text#rotextbox #{authorization_token} 
+

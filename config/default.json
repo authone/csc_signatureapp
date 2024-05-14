@@ -1,0 +1,18 @@
+{
+  "server": {
+    "port": 8080
+  },
+  "paperless": {
+    "url": "https://rssdemo.certsign.ro/CSC.ApiService_01/csc/v1",
+    "external_id": "00000000-0000-0000-0000-000000000000",
+    "oauth_client_id": "ffffffff-ffff-ffff-ffff-ffffffffffff",
+    "oauth_client_secret": "xxxxxxx",
+    "redirect_uri": "http://localhost:8080/redirect"
+  },
+  "credentials": {
+    "context": [
+      "https://www.w3.org/2018/credentials/v1",
+      "https://www.w3.org/2018/credentials/DC4EU_Issuer_Example_CSGN/v1"
+    ]
+  }
+}
